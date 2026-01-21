@@ -5,7 +5,5 @@ venv/
 .env
 .DS_Store
 traffic_data.json
-simple_demo_data.json
 *.png
 *.log
-openmined demo notes.rtf
