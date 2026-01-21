@@ -51,8 +51,4 @@ python traffic_privacy_demo.py
 
 ## Educational Purpose
 
-This project serves as a practical exploration of privacy-preserving machine learning concepts.
-
----
-
-**Note:** This is an educational implementation exploring PySyft capabilities. The `infrastructure_src/` folder contains reference implementations for full domain deployment.
+This project is a practical test of privacy-preserving machine learning concepts. The `infrastructure_src/` folder has reference implementations.
