@@ -1,6 +1,7 @@
 # PySyft Traffic Privacy Demo
 
 **Concept:** A technical simulation of "Remote Data Science" for Urban Planning.
+Based on the blog: https://openmined.org/blog/mobilizing-sensitive-consumer-data-through-syft/
 
 ## The Story
 
@@ -42,7 +43,7 @@ python traffic_privacy_demo.py
 - Statistical analysis on encapsulated data
 - Federated learning 
 
-## 📋 Setup Requirements
+## Setup Requirements
 
 - Python 3.10+
 - PySyft 0.9.x
