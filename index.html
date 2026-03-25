@@ -782,6 +782,44 @@
   </p>
 </div>
 
+<!-- ===== BEYOND TRAFFIC: FEDERATED RAG ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Beyond Traffic Data</div>
+      <h2>The same principle powers Federated RAG</h2>
+      <p>In this demo, GPS data stays local and only a traffic level comes back. <a href="https://openmined.org/blog/tutorial-turn-any-llm-into-an-expert-assistant-with-federated-rag-part-1/" target="_blank" rel="noopener">Federated RAG</a> applies the same idea to LLMs: documents stay local, only relevant snippets come back for the model to synthesize.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+
+      <div style="background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 28px 24px;">
+        <div style="font-size: 24px; margin-bottom: 12px;">&#129658;</div>
+        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Healthcare</h4>
+        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">"Which of my diabetic patients had adverse reactions to medication X in hospitals across the country?" The query goes to each hospital. Patient records never leave.</p>
+      </div>
+
+      <div style="background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 28px 24px;">
+        <div style="font-size: 24px; margin-bottom: 12px;">&#9878;</div>
+        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Legal</h4>
+        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">"What precedents exist for this clause across firms in our network?" Each firm searches its own case law. Only matching snippets are returned.</p>
+      </div>
+
+      <div style="background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 28px 24px;">
+        <div style="font-size: 24px; margin-bottom: 12px;">&#128176;</div>
+        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Compensation</h4>
+        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">"Based on shared salary data for my role, am I underpaid?" Salary databases stay private. You get an aggregate answer, not raw records.</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 32px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px;">
+      <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+        OpenMined calls this <strong>broad listening</strong>: instead of training on public data and guessing, models consult real experts and data owners directly. The <a href="https://openmined.org/blog/tutorial-turn-any-llm-into-an-expert-assistant-with-federated-rag-part-1/" target="_blank" rel="noopener" style="color: var(--text); text-decoration: underline; text-underline-offset: 3px;">Federated RAG tutorial</a> shows how to build this in ~50 lines of Python with Syft Hub. Because there's 1000x more valuable data behind privacy walls than on the public web.
+      </p>
+    </div>
+  </div>
+</section>
 
 <!-- ===== STRUCTURED TRANSPARENCY ===== -->
 <section class="section">
