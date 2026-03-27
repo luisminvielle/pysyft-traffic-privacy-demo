@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>With Claude Code, You Can Generate Images That Render | Blog for Anthropic</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --surface2: #f3f1ed;
+    --text: #1a1a2e;
+    --text-secondary: #555770;
+    --text-dim: #8b8fa3;
+    --border: #e5e2db;
+    --border-light: #edeae4;
+    --accent: #d97706;
+    --accent2: #6366f1;
+    --accent3: #10b981;
+    --anthropic-tan: #d4a574;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* Top banner */
+  .top-banner {
+    background: #1a1a2e;
+    color: #ccc;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 24px;
+    letter-spacing: 0.3px;
+  }
+
+  .top-banner strong {
+    color: #fff;
+  }
+
+  .top-banner a {
+    color: var(--anthropic-tan);
+    text-decoration: underline;
+  }
+
+  /* Article container */
+  .article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 100px;
+    background: var(--surface);
+    min-height: 100vh;
+    box-shadow: 0 0 60px rgba(0,0,0,0.04);
+  }
+
+  .byline {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 44px 0 16px;
+    letter-spacing: -0.3px;
+  }
+
+  .svg-container {
+    margin: 32px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .svg-container svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .caption {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .highlight-box {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin: 32px 0;
+    font-size: 15px;
+  }
+
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  .screenshot-grid img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .screenshot-grid .wide {
+    grid-column: 1 / -1;
+  }
+
+  .screenshot-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .img-block {
+    margin: 28px 0;
+  }
+
+  .img-block img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .img-block .caption {
+    border: none;
+    background: none;
+    padding: 8px 0 0;
+  }
+
+  .footer-note {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .for-badge {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    letter-spacing: 0.2px;
+  }
+
+  .for-badge strong {
+    color: var(--text);
+  }
+</style>
+</head>
+<body>
+
+<div class="top-banner">
+  Independent blog post by <strong>Luis Minvielle</strong>, Content Marketing Manager. Written for the Anthropic content team: Lani, Ramey, Austin, and Sasha. · <a href="https://luisminvielle.github.io/">luisminvielle.github.io</a>
+</div>
+
+<div class="article">
+
+<div class="for-badge">Blog for <strong>Anthropic</strong> · by Luis Minvielle</div>
+
+<div class="byline">Luis Minvielle · March 2026</div>
+
+<h1>With Claude Code, You Can Generate Images That Render. This Is Useful for Your Content.</h1>
+
+<p class="subtitle">I built a technical tutorial this week and realized something about visual content that every content lead should know about.</p>
+
+<h2>Content right now feels like it's all speed</h2>
+
+<!-- SVG: Intro - speed vs quality -->
+<div class="svg-container">
+  <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="720" height="200" fill="#f3f1ed"/>
+    <!-- Speed arrow -->
+    <path d="M 60 100 L 340 100" stroke="#dc3545" stroke-width="3" fill="none" marker-end="url(#introArrow)"/>
+    <text x="200" y="88" text-anchor="middle" fill="#dc3545" font-family="Inter" font-size="13" font-weight="700">SPEED</text>
+    <text x="200" y="128" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">60,000 articles in 6 months</text>
+    <text x="200" y="144" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">800+ sites deindexed by Google</text>
+    <!-- Divider -->
+    <line x1="380" y1="40" x2="380" y2="160" stroke="#e5e2db" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <!-- Quality + Speed -->
+    <rect x="410" y="50" width="270" height="100" rx="12" fill="#fff" stroke="#10b981" stroke-width="2"/>
+    <text x="545" y="78" text-anchor="middle" fill="#10b981" font-family="Inter" font-size="13" font-weight="700">SPEED + QUALITY</text>
+    <text x="545" y="100" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Useful for most users</text>
+    <text x="545" y="116" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Looks good on most devices</text>
+    <text x="545" y="132" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Readable by LLMs and people</text>
+    <text x="545" y="170" text-anchor="middle" fill="#d97706" font-family="Inter" font-size="11" font-weight="600">Generated images that render</text>
+    <defs>
+      <marker id="introArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#dc3545"/>
+      </marker>
+    </defs>
+  </svg>
+  <div class="caption">Speed alone got 800+ sites deindexed. Speed with quality is the actual opportunity.</div>
+</div>
+
+<p>Everything in content right now seems accelerated. With agents, it looks like we can do absolutely everything. And many times the claim is that this speed comes at the expense of the quality that started organically. There's evidence for this. Google's March 2024 core update <a href="https://www.searchenginejournal.com/googles-march-2024-core-update-impact-hundreds-of-websites-deindexed/510981/">deindexed over 800 websites</a> that had scaled up AI-generated content. One site had published 60,000 articles in six months. That's spam.</p>
+
+<p>But there is a use case where you can do something with speed, well-made and with speed (a very different thing). Something that is useful for most users. That looks good on most devices. That LLMs can read. That people can read too.</p>
+
+<p>That use case is generating images and visual content for blogs that renders in the browser.</p>
+
+<p>I know this sounds contradictory. I'm going to get into what I found out while making a technical tutorial this week, and why it can help all content leads. Including the content team at Anthropic.</p>
+
+<h2>The rendering paradigm</h2>
+
+<p>When I played <em>Red Dead Redemption 2</em>, Rockstar had designed the map so that elements render in specific places. That's what creates persistence. You ride through a valley and the trees, the rocks, the light are all there because someone placed them and the engine renders them exactly where they should be. That persistence is incredibly hard to achieve with generative AI.</p>
+
+<div class="img-block">
+  <img src="screenshots/read-dead-2.jpg" alt="Red Dead Redemption 2 screenshot showing rendered open world with persistent elements">
+  <div class="caption"><em>Red Dead Redemption 2</em>. Rockstar designed every element to render in place. That's persistence.</div>
+</div>
+
+<h2>The generation problem</h2>
+
+<p>When I use Nano Banana Pro (which I love), I sometimes run into this: the other day I had an existing photo and asked it to change a few details. It did a great job with most of it. It extended the background, made the image wider, all good. But along the way it completely changed a book cover. The book used to say "The Red Book." Look at what it says now:</p>
+
+<div class="img-block">
+  <img src="screenshots/used-to-be-red-book-now-its-nonsense-generativeai.png" alt="Book cover that used to read The Red Book, now shows nonsensical AI-generated letters">
+  <div class="caption">This used to say "The Red Book." Nano Banana Pro turned it into nonsense. The letters are well-placed and nice-looking. They are completely meaningless.</div>
+</div>
+
+<p>This is a generative AI problem. Generative AI has serious trouble with persistence. Renders handle persistence well. When you drew Iron Man in Illustrator, you could export it to any size you wanted. Same when you made a company logo. In Photoshop, the image was rasterized and you lost scalability. The text, at least, always said what it was supposed to say.</p>
+
+<p>That's the tradeoff we've been living with in the 2020s. This is a contemporary paradigm. You either render (the way we've been used to all these years playing <em>Red Dead Redemption 2</em> or fighting our way into Adobe Illustrator) or you generate (what you can do with, let's say, Nano Banana Pro). One gives you control. The other gives you speed. Pick one.</p>
+
+<!-- SVG: The paradigm split -->
+<div class="svg-container">
+  <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+    <rect width="720" height="280" fill="#f8f9fa"/>
+    <!-- Left: Render -->
+    <rect x="40" y="20" width="280" height="240" rx="14" fill="#fff" stroke="#6366f1" stroke-width="2"/>
+    <text x="180" y="50" text-anchor="middle" fill="#6366f1" font-family="Inter" font-size="15" font-weight="700">RENDER</text>
+    <line x1="70" y1="62" x2="290" y2="62" stroke="#e5e7eb" stroke-width="1"/>
+    <!-- RDR2 icon -->
+    <rect x="70" y="78" width="240" height="36" rx="6" fill="#eef2ff"/>
+    <text x="190" y="101" text-anchor="middle" fill="#4338ca" font-family="Inter" font-size="11" font-style="italic">Red Dead Redemption 2</text>
+    <!-- Illustrator icon -->
+    <rect x="70" y="122" width="240" height="36" rx="6" fill="#eef2ff"/>
+    <text x="190" y="145" text-anchor="middle" fill="#4338ca" font-family="Inter" font-size="11">Adobe Illustrator</text>
+    <!-- Traits -->
+    <text x="190" y="184" text-anchor="middle" fill="#555770" font-family="Inter" font-size="11">Persistent, precise, editable</text>
+    <text x="190" y="204" text-anchor="middle" fill="#555770" font-family="Inter" font-size="11">Text is real text</text>
+    <text x="190" y="232" text-anchor="middle" fill="#dc3545" font-family="Inter" font-size="11" font-weight="600">Slow and manual, takes hours</text>
+
+    <!-- Right: Generate -->
+    <rect x="400" y="20" width="280" height="240" rx="14" fill="#fff" stroke="#d97706" stroke-width="2"/>
+    <text x="540" y="50" text-anchor="middle" fill="#d97706" font-family="Inter" font-size="15" font-weight="700">GENERATE</text>
+    <line x1="430" y1="62" x2="650" y2="62" stroke="#e5e7eb" stroke-width="1"/>
+    <!-- Nano Banana -->
+    <rect x="430" y="78" width="240" height="36" rx="6" fill="#fef3c7"/>
+    <text x="550" y="101" text-anchor="middle" fill="#92400e" font-family="Inter" font-size="11">Nano Banana Pro</text>
+    <!-- Other gen -->
+    <rect x="430" y="122" width="240" height="36" rx="6" fill="#fef3c7"/>
+    <text x="550" y="145" text-anchor="middle" fill="#92400e" font-family="Inter" font-size="11">Image generators</text>
+    <!-- Traits -->
+    <text x="540" y="184" text-anchor="middle" fill="#555770" font-family="Inter" font-size="11">Fast, visual, impressive</text>
+    <text x="540" y="204" text-anchor="middle" fill="#555770" font-family="Inter" font-size="11">Text is nonsense pixels</text>
+    <text x="540" y="232" text-anchor="middle" fill="#dc3545" font-family="Inter" font-size="11" font-weight="600">The output is static and locked</text>
+
+    <!-- VS -->
+    <circle cx="360" cy="140" r="22" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
+    <text x="360" y="146" text-anchor="middle" fill="#d97706" font-family="Inter" font-size="14" font-weight="700">vs</text>
+  </svg>
+  <div class="caption">The 2020s tradeoff. Pick speed or control. Until now.</div>
+</div>
+
+<h2>Generate code that renders</h2>
+
+<p>With Claude Code, you can actually generate code that will render. That breaks the paradigm.</p>
+
+<p>I realized this while building an interactive demo with Claude Code (a privacy-preserving traffic analysis tutorial using PySyft, FastAPI, and Server-Sent Events). Claude Code wrote SVG diagrams, architecture charts, animated comparisons, all as code. The browser renders them. They look like someone designed them in Illustrator, but they were generated in seconds from a text prompt.</p>
+
+<div class="highlight-box">
+I can now <strong>generate</strong> images that <strong>render</strong>. Yes, I know it sounds contradictory. You either render (the paradigm we've been used to all these years playing <em>Red Dead Redemption 2</em> or fighting our way into Adobe Illustrator) or you generate (what you can do with, let's say, Nano Banana Pro, which I love.) With Claude Code you can actually generate code that will render. And that brings all kinds of practical benefits.
+</div>
+
+<p>The text in these images is written with actual typefaces. Real characters, drawn by the browser's font engine. The letters say what they're supposed to say, and they say it persistently.</p>
+
+<!-- SVG: Benefits -->
+<div class="svg-container">
+  <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+    <rect width="720" height="320" fill="#f8f9fa"/>
+    <text x="360" y="34" text-anchor="middle" fill="#1a1a2e" font-family="Inter" font-size="14" font-weight="700">What "generate code that renders" gives you</text>
+    <!-- Row 1 -->
+    <rect x="40" y="56" width="200" height="80" rx="10" fill="#fff" stroke="#10b981" stroke-width="1.5"/>
+    <text x="140" y="82" text-anchor="middle" fill="#10b981" font-family="Inter" font-size="20">Aa</text>
+    <text x="140" y="104" text-anchor="middle" fill="#1a1a2e" font-family="Inter" font-size="11" font-weight="600">Real typefaces</text>
+    <text x="140" y="120" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Text is actual characters,</text>
+    <text x="140" y="132" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">actual font glyphs</text>
+
+    <rect x="260" y="56" width="200" height="80" rx="10" fill="#fff" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="360" y="82" text-anchor="middle" fill="#6366f1" font-family="Inter" font-size="18">&#x270E;</text>
+    <text x="360" y="104" text-anchor="middle" fill="#1a1a2e" font-family="Inter" font-size="11" font-weight="600">Easy to change later</text>
+    <text x="360" y="120" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Edit the code, edit the image.</text>
+    <text x="360" y="132" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Edit the code and the image changes</text>
+
+    <rect x="480" y="56" width="200" height="80" rx="10" fill="#fff" stroke="#d97706" stroke-width="1.5"/>
+    <text x="580" y="82" text-anchor="middle" fill="#d97706" font-family="Inter" font-size="18">{ }</text>
+    <text x="580" y="104" text-anchor="middle" fill="#1a1a2e" font-family="Inter" font-size="11" font-weight="600">Multiple export styles</text>
+    <text x="580" y="120" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">matplotlib styles, SVG themes,</text>
+    <text x="580" y="132" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">match any brand guidelines</text>
+
+    <!-- Row 2 -->
+    <rect x="40" y="156" width="200" height="80" rx="10" fill="#fff" stroke="#ec4899" stroke-width="1.5"/>
+    <text x="140" y="182" text-anchor="middle" fill="#ec4899" font-family="Inter" font-size="18">&#x21F2;</text>
+    <text x="140" y="204" text-anchor="middle" fill="#1a1a2e" font-family="Inter" font-size="11" font-weight="600">SVG to PNG export</text>
+    <text x="140" y="220" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Generate as SVG, export</text>
+    <text x="140" y="232" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">rasterized whenever needed</text>
+
+    <rect x="260" y="156" width="200" height="80" rx="10" fill="#fff" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="360" y="182" text-anchor="middle" fill="#0ea5e9" font-family="Inter" font-size="16">&lt;svg&gt;</text>
+    <text x="360" y="204" text-anchor="middle" fill="#1a1a2e" font-family="Inter" font-size="11" font-weight="600">Inline in CMS</text>
+    <text x="360" y="220" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">If the CMS supports it,</text>
+    <text x="360" y="232" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">insert SVGs directly in posts</text>
+
+    <rect x="480" y="156" width="200" height="80" rx="10" fill="#fff" stroke="#10b981" stroke-width="1.5"/>
+    <text x="580" y="182" text-anchor="middle" fill="#10b981" font-family="Inter" font-size="16">&#x2601;</text>
+    <text x="580" y="204" text-anchor="middle" fill="#1a1a2e" font-family="Inter" font-size="11" font-weight="600">Plain HTML loading</text>
+    <text x="580" y="220" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Loads in any browser.</text>
+    <text x="580" y="232" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Loads in any browser with plain HTML</text>
+
+    <!-- Bottom note -->
+    <rect x="120" y="260" width="480" height="44" rx="10" fill="#fff" stroke="#d97706" stroke-width="2"/>
+    <text x="360" y="280" text-anchor="middle" fill="#d97706" font-family="Inter" font-size="12" font-weight="600">Every SVG on this page was generated with Claude Code.</text>
+    <text x="360" y="296" text-anchor="middle" fill="#555770" font-family="Inter" font-size="10">Style them to match the blog. Export as PNG. Or serve them inline.</text>
+  </svg>
+  <div class="caption">Six practical benefits content leads should know about.</div>
+</div>
+
+<h2>Why content leads should care about this</h2>
+
+<p>Content leads (and I consider myself one) should realize that it's now very practical to generate SVGs, give them a style that closely matches the blog's look, and then choose how to serve them. You can export them rasterized as PNG for traditional CMS setups. Or, if the CMS is ready for it, you can insert SVGs directly and get a little bit of interactivity for free.</p>
+
+<p>We're generating images that load with plain HTML in any reader's browser. That's a spectacular benefit and people should take it into account.</p>
+
+<h2>The demo that started all of this</h2>
+
+<p>I built an interactive privacy tutorial using PySyft, FastAPI, and Claude Code. The browser shows differential privacy in action. The terminal shows raw computation. They're connected in real time through Server-Sent Events. Every diagram, every chart, every architecture illustration in that demo was generated as SVG code.</p>
+
+<div class="screenshot-grid">
+  <div>
+    <img src="screenshots/screen-1.png" alt="Terminal: PySyft demo server starting up">
+    <div class="screenshot-label">Server starts up. Ready at localhost:8000.</div>
+  </div>
+  <div>
+    <img src="screenshots/screen-2.png" alt="Terminal: SSE events streaming analysis results">
+    <div class="screenshot-label">Analysis runs. Events stream to the browser.</div>
+  </div>
+  <div>
+    <img src="screenshots/screen-3.png" alt="Terminal: PySyft differential privacy computation">
+    <div class="screenshot-label">PySyft runs with differential privacy.</div>
+  </div>
+  <div class="wide">
+    <img src="screenshots/screenbrowser.png" alt="Browser: full interactive demo running at localhost">
+    <div class="screenshot-label">The browser shows everything live. This is the demo Claude Code built.</div>
+  </div>
+</div>
+
+<p>You can see it live here: <a href="https://luisminvielle.github.io/pysyft-traffic-privacy-demo/">luisminvielle.github.io/pysyft-traffic-privacy-demo</a></p>
+
+<div class="footer-note">
+  <p>Luis Minvielle. Content Marketing Manager. I write about things I build. <a href="https://luisminvielle.github.io/">luisminvielle.github.io</a></p>
+</div>
+
+</div><!-- /article -->
+
+</body>
+</html>
